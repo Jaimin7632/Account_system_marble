@@ -108,3 +108,6 @@
             
         
 <?php include("utils/footer.php"); ?>
+<script>
+$('#payment').addClass('active');
+</script>

@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body  ng-app="myApp">
+<body  ng-app="myApp" ng-controller="customersCtrl">
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
             <!--
@@ -51,38 +51,38 @@
                 </a>
             </div>
             <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active">
+                <ul class="nav" id="nav">
+                    <li id="payment">
                         <a href="index.php">
                             <i class="far fa-credit-card"></i>
                             <p>Payment</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./purchase.php">
+                    <li id="payment_report">
+                        <a href="./payment_report.php">
                             <i class="fas fa-shopping-cart"></i>
                             <p>Payment Report</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./payment.php">
+                    <li id="maintain_stock">
+                        <a href="./maintain_stock.php">
                             <i class="far fa-credit-card"></i>
                             <p>Maintain Stock</p>
                         </a>
                     </li>
-                    <li>
+                    <li id="stock_report">
                         <a href="./stock.php">
                             <i class="far fa-hdd"></i>
                             <p>Stock Report</p>
                         </a>
                     </li>
-                    <li>
+                    <li id="add_details">
                         <a href="./aaddetails.php">
                             <i class="fas fa-user-plus"></i>
                             <p>Add details</p>
                         </a>
                     </li>
-                   <li >
+                   <li id="delete_details">
                         <a href="./deleteinfo.php">
                             <i class="far fa-trash-alt"></i>
                             <p>Delete Details</p>
@@ -107,7 +107,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Sell / invoice </a>
+                        
                     </div>
                     
                 </div>
