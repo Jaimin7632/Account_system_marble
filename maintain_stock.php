@@ -9,14 +9,14 @@
                                     <p class="category"></p>
                                 </div>
                                 <div class="card-content">
-                                    <form url="utils/add_bill_data.php" if="myForm">
+                                    <form url="utils/add_stock_data.php" if="myForm">
                                         <div class="row">
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group label">
                                                     <label class="control-label">Product</label>
                                                     
-                                                        <select class="form-control" id="party_names" ng-change="get_product_type()" ng-model="product_type">
+                                                        <select class="form-control" name="product" ng-change="get_product_type()" ng-model="product_name">
                                                             <option value="">Select</option>
                                                           <?php
                                                             $result = $conn->query("select DISTINCT product from stock");
@@ -33,9 +33,8 @@
                                                 <div class="form-group label">
                                                     <label class="control-label">Product_type</label>
                                                     
-                                                        <select class="form-control" id="party_names" ng-repeat="x in names">
-                                                            <option value="">{{x.product_type}}</option>
-                                                         
+                                                        <select class="form-control" name="product_type" ng-repeat="x in product_type_data">
+                                                            <option value="{{x.product_type}}">{{x.product_type}}</option>                                      
                                                         </select>
                                                 </div>
                                             </div>
@@ -46,13 +45,13 @@
                                             <center>
                                                 <div class="col-md-6 x">
                                                     <div class="radio" >
-                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="0" id="pay" required>ADD</label>
+                                                      <label style="width: 100px;"><input type="radio" name="add_minus" value="0" id="pay" required>ADD</label>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-md-6 x">
                                                     <div class="radio" >
-                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="1" id="receive" required>LESS</label>
+                                                      <label style="width: 100px;"><input type="radio" name="add_minus" value="1" id="receive" required>LESS</label>
                                                     </div>
                                                 </div>
                                                 
@@ -73,7 +72,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group label">
                                                     <label class="control-label">QUANTITY</label>
-                                                    <input type="text" value="" class="form-control" name="bill_no"  required>
+                                                    <input type="text" value="" class="form-control" name="amount"  required>
                                                 </div>
                                             </div>
                                          </div>
@@ -83,7 +82,7 @@
                                       
 
 
-                                        <button type="submit"  class="btn btn-primary pull-right" id="sell">SUBMIT</button>
+                                        <button type="submit"  class="btn btn-primary pull-right" >SUBMIT</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>

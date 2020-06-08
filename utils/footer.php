@@ -67,32 +67,16 @@ var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
    
      $scope.get_product_type = function() {
-        alert("asdda");
-        //  name =$('#partyname').val();
-        // //getparty();
-        // if(name!=""){
-        //         $.post("php/getpartyamount.php",
-        //          {
-        //              pname: name
-        //          },
-        //         function(data, status){
-        //            // alert("dasdas");
-                  
-        //           $('#pamount').text(data);
-        //         });
-
-        //             var post = $http({
-        //                     method: "POST",
-        //                     url: "php/getpartyaccount.php?name="+name,                
-        //                     headers: { "Content-Type": "application/json" }
-        //                 }).then(function(response) {
-        //               $scope.names = response.data.records;
-        //               //alert(response.data);
-        //             });
-        // }else{ $('#pamount').text("Amount");}
-    
-    
- 
+        name = $scope.product_name;
+        var post = $http({
+                            method: "GET",
+                            url: "utils/get_product_type.php?name="+name,                
+                            headers: { "Content-Type": "application/json" }
+                        }).then(function(response) {
+                        
+                      $scope.product_type_data = response.data;
+                      //alert(response.data);
+                    });
           
     };
 });
