@@ -1,0 +1,50 @@
+input:not([disabled]),select{
+    background: #f5f5f5 !important;
+}
+input:focus,.btn:focus,select:focus{
+   box-shadow: 0 0 0px 2px #ccc !important;
+}
+body{
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-weight: lighter;
+}
+.logo  img{
+    width: 200px;
+}
+.form-group label.control-label, label {
+    font-size: 13px;
+    color: #000 !important;
+}
+
+#pop-up-out{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    display: none;
+    
+}
+#pop-up-in{
+    padding: 20px;
+    position: absolute;
+    min-width: 50%;
+    min-height: 30%;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    z-index: 200;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+.appear{
+    display: block !important;
+}
+.main-panel{
+    min-height: 100vh;
+}
+
+
+
+

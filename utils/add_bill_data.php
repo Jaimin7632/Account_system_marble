@@ -11,7 +11,7 @@ $pay_receive = $_POST['pay_receive'];
 $amount = $_POST['amount'];
 
 
-$sql = "INSERT INTO bill_account(date, party_name, bill_no, book_no, mobile_no, comment, pay_receive, amount) VALUES ('$date','$party_name', '$bill_no', '$book_no', '$mobile_no', '$comment', $pay_receive, $amount)";
+$sql = "INSERT INTO bill_account(date, party_name, bill_no, book_no, mobile_no, comment, pay_receive, amount, is_bill) VALUES ('$date','$party_name', '$bill_no', '$book_no', '$mobile_no', '$comment', $pay_receive, $amount, 1)";
 if($conn->query($sql)){
 	echo "Data added"; 
 }else{

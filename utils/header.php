@@ -19,24 +19,9 @@
    <link rel="stylesheet" href="fontawesome/web-fonts-with-css/css/fontawesome-all.css" >
 
     <script src="assets/js/angular179.js"></script>
-    <style type="text/css">
-        input:not([disabled]),select{
-            background: #f5f5f5 !important;
-        }
-        input:focus,.btn:focus,select:focus{
-           box-shadow: 0 0 2px 1px #ff4d4d !important;
-        }
-        body{
-            letter-spacing: 1px;
-            word-spacing: 2px;
-            font-weight: lighter;
-        }
-        .logo  img{
-            width: 200px;
-        }
-    </style>
+    <link href="assets/css/style.css" rel="stylesheet" />
+    
 </head>
-
 <body  ng-app="myApp" ng-controller="customersCtrl">
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
@@ -55,7 +40,13 @@
                     <li id="payment">
                         <a href="index.php">
                             <i class="far fa-credit-card"></i>
-                            <p>Payment</p>
+                            <p>New Payment</p>
+                        </a>
+                    </li>
+                    <li id="update_bills">
+                        <a href="update_bill.php">
+                            <i class="far fa-credit-card"></i>
+                            <p>Update Bills</p>
                         </a>
                     </li>
                     <li id="payment_report">

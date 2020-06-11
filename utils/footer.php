@@ -12,7 +12,9 @@
 </footer>
 
 </div>
+
     </div>
+
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -31,59 +33,5 @@
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
-<script>
-function showNoti(a,b){
-     $.notify({
-        icon: "",
-        message: b
-
-    }, {
-        type: a,
-        timer: 1000,
-        placement: {
-            from: "top",
-            align: "center"
-        }
-    });
-    }
-$('form').submit(function(e){
-    e.preventDefault();
-
-    $.ajax({
-        url:$(this).attr("url"),
-        type:'post',
-        data:$(this).serialize(),
-        success:function(response){
-            showNoti("success",response)
-           
-        }
-    });
-     $(this).trigger("reset");
-    
-});
-       
-
-var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, $http) {
-   
-     $scope.get_product_type = function() {
-        name = $scope.product_name;
-        var post = $http({
-                            method: "GET",
-                            url: "utils/get_product_type.php?name="+name,                
-                            headers: { "Content-Type": "application/json" }
-                        }).then(function(response) {
-                        
-                      $scope.product_type_data = response.data;
-                      //alert(response.data);
-                    });
-          
-    };
-});
-
-</script>
-<script type="text/javascript">
- 
-</script>
-
+<script src="assets/js/own.js"></script>
 </html>

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "phpmyadmin";
+$password = "1234";
 $dbname = "account_db";
 
 // Create connection
@@ -30,9 +30,11 @@ if(!$result){
 				bill_no VARCHAR(30) NOT NULL,
 				book_no VARCHAR(50) NOT NULL,
 				mobile_no VARCHAR(50) NOT NULL,
-				pay_receive int(5) NOT NULL,  # 1->pay, 2->receive
+				pay_receive int(5) NOT NULL,  # 1->pay, 0->receive
 				comment VARCHAR(500) NULL,
-				amount int(100) NOT NULL
+				amount int(100) NOT NULL,
+				is_bill int(5) NOT NULL,
+				bill_id int(5) NULL
 				)";
 
 	$stock = "CREATE TABLE stock (
@@ -41,7 +43,8 @@ if(!$result){
 				product VARCHAR(100) NOT NULL,
 				product_type VARCHAR(100) NOT NULL,
 				add_minus int(5) NOT NULL,  # 1->pay, 2->receive
-				amount int(100) NOT NULL
+				amount int(100) NOT NULL,
+				is_new int(5) NOT NULL
 				)";
 	if ($conn->query($bill_account)!=True or $conn->query($stock)!=True){
 		print_r("Error while creating tables");

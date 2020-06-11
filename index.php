@@ -39,13 +39,13 @@
                                             <center>
                                                 <div class="col-md-6 x">
                                                     <div class="radio" >
-                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="0" id="pay" required>To Pay</label>
+                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="0" id="pay" required>Vendor</label>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-md-6 x">
                                                     <div class="radio" >
-                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="1" id="receive" required>To Receive</label>
+                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="1" id="receive" required>Customer</label>
                                                     </div>
                                                 </div>
                                                 
