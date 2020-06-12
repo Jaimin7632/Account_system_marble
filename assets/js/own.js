@@ -79,13 +79,18 @@ app.controller('customersCtrl', function($scope, $http) {
     };
 
     $scope.get_bills_report = function(){
-        // alert($scope.bill_no);
+        bill_no = $('#bill_no').val();
+        if (typeof bill_no == 'undefined')
+        {
+            bill_no="";
+        }
+        // alert(bill_no);
            $http({
         method: "post",
         url: "utils/get_bill_report.php",
         data: {
             pname:  $('#pname').val(),
-            bill_no:  $scope.bill_no,
+            bill_no:  bill_no,
             bill_type:  $('#bill_type').val(),
             date1:  $('#date1').val(),
             date2:  $('#date2').val()
@@ -97,11 +102,11 @@ app.controller('customersCtrl', function($scope, $http) {
          obj = JSON.parse(JSON.stringify(response.data.bills));
          // alert(obj[0].id);
          $scope.effective_amount_total= 0;
-         $scope.total_amount= 0
+         $scope.total_amount= 0;
 
          for(x in obj){
-            $scope.effective_amount_total += obj[x].effective_amount;
-            $scope.total_amount += obj[x].amount;
+            $scope.effective_amount_total += parseInt(obj[x].effective_amount);
+            $scope.total_amount += parseInt(obj[x].amount);
          }
 
      });
