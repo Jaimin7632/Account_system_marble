@@ -14,22 +14,22 @@ function showNoti(a,b){
     }
 
 
-// $('form').submit(function(e){
-//     element = $(this);
-//     $.ajax({
-//         url:element.attr("url"),
-//         type:'post',
-//         data:element.serialize(),
-//         success:function(response){
+$('form').submit(function(e){
+    element = $(this);
+    $.ajax({
+        url:element.attr("url"),
+        type:'post',
+        data:element.serialize(),
+        success:function(response){
 
-//             showNoti("success",response)
+            showNoti("success",response)
            
-//         }
-//     });
+        }
+    });
 
-//      element.trigger("reset");
-//      $('.pop-up').removeClass('appear');
-// });
+     element.trigger("reset");
+     $('.pop-up').removeClass('appear');
+});
 
        
 var scope_holder;
@@ -94,31 +94,33 @@ app.controller('customersCtrl', function($scope, $http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response) {
          $scope.bills_report = response.data.bills;
+         obj = JSON.parse(JSON.stringify(response.data.bills));
+         // alert(obj[0].id);
+         $scope.effective_amount_total= 0;
+         $scope.total_amount= 0
+
+         for(x in obj){
+            $scope.effective_amount_total += obj[x].effective_amount;
+            $scope.total_amount += obj[x].amount;
+         }
+
      });
 
-        // var post = $http({
-
-        //         method: "GET",
-        //         url: "utils/get_bill_report.php",                
-        //         headers: { "Content-Type": "application/json" }
-        //     }).then(function(response) {
-        //     // alert(JSON.stringify(response.data.bills));
-        //   $scope.bills_report = response.data.bills;
-        //   //alert(response.data);
-        // });
+     
     };
 
     $scope.expand_row = function($event){
         element  = $event.target.parentElement
         // alert($(element).attr(''));
         if(!$(element).hasClass('active')){
-            $('tr').removeClass('active');
             $(element).toggleClass("active", "").nextUntil('.header').css('display', 'table-row');
         }else{
             $(element).toggleClass("active", "").nextUntil('.header').css('display', 'none');
-            $('tr').removeClass('active');
+            
         }
     };
+
+ 
 
 });
 app.filter( 'pay_receive_filter', function() {
@@ -129,6 +131,8 @@ app.filter( 'pay_receive_filter', function() {
 
 app.filter( 'add_less', function() {
     return function( input ) {
-        if(input==1){return "LESS";}else{ return "ADD";}
+        if(input==1){return "LESS";}else if(input==0){ return "ADD";}
+        if(input==11){return "Customer";}else if(input==10){ return "Vendor";}
+
         }
 });

@@ -74,8 +74,8 @@
                                                     <label class="control-label">Bill Type</label>
                                                     <select class="form-control" id="bill_type" ng-model="bill_type" ng-change="get_bills_report()">
                                                         <option value="">Sellect</option>
-                                                        <option value="1">Vendor</option>
-                                                        <option value="0">Customer</option>
+                                                        <option value="0">Vendor</option>
+                                                        <option value="1">Customer</option>
                                                      </select>
                                          </div>
                                     </div>
@@ -92,11 +92,25 @@
                                     </div>
                                     <div class="col-md-6">
                                          <div class="form-group label">
-                                                    <label class="control-label">From:</label>
+                                                    <label class="control-label">To:</label>
                                                     <input type="date" class="form-control" value="" class="" id="date2" ng-model="date2" ng-change="get_bills_report()">
                                          </div>
                                     </div>
                                    
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="generate_pdf/generate_pdf.php" method="post">
+                                        <input type="hidden" name='data' value="{{bills_report}}" name="">
+                                        <input type="hidden" name='footer_data' value="Pending: {{effective_amount_total}} /  Total: {{total_amount}}" name="">
+                                        <input type="submit" value="PDF" style="background: #f44336 !important;" class="btn btn-danger" name="">
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <h4 >Pending: <span class="text-primary">{{effective_amount_total}} </span>/ Total: <span class="text-primary">{{total_amount}}</span></h4>
+                                        
+                                    </div>
                                 </div>
 
                             </div>

@@ -21,61 +21,40 @@ $sql=$conn->query("SELECT * FROM bill_account where ".$add." ORDER BY date desc"
 while($r = $sql->fetch_assoc()){
 	$bill_id= $r['id'];
 	$total_amount = 0;
-	if($r['pay_receive']==1){
-		$total_amount = $r['amount'];
-	}else{
-		$total_amount = -$r['amount'];
-	}
+	
 
 	$bill_query = $conn->query("SELECT * FROM bill_account where bill_id=$bill_id");
 	$details = array();
+	$details[] = $r;
+	$details[0]['pay_receive'] = 10+$r['pay_receive'];
 	while($bill_details = $bill_query -> fetch_assoc()){
-		if($bill_details['pay_receive']==1){
-			$total_amount -= $bill_details['amount'];
-		}else{
+		// if($r['pay_receive'] != $bill_details['pay_receive']){
+		// 	$r['amount'] += $bill_details['amount'];
+
+		// }
+
+		if($bill_details['pay_receive']==1){   # 0 - Add, 1- Less
 			$total_amount += $bill_details['amount'];
+		}else{
+			// $total_amount += $bill_details['amount'];
+			$r['amount'] += $bill_details['amount'];
 		}
 		$details[] = $bill_details;
 	}
+
+
+	if($r['pay_receive']==1){ # 0 - vendor , 1 - customer
+		$total_amount = $r['amount'] - $total_amount;
+	}else{
+		$total_amount = -$r['amount'] + $total_amount;
+	}
+
 	$r['details'] = $details;
 	$r['effective_amount'] = $total_amount;
 	$result['bills'][]= $r;
 }
 
-########
 
-// $add=" AND is_bill=0";
-// if($pname !="" && $is_bill!=""){
-// 	$add.=" AND party_name='$pname' AND bill_no=$bill_no";
-// 	$bill_query = $conn->query("SELECT * FROM bill_account where party_name='$pname' AND $bill_no=$bill_no AND is_bill=1");
-// 	$bill_details = $bill_query->fetch_assoc();
-// 	if($bill_details['pay_receive']==0){
-// 		$result['var']['amount'] = $bill_details['amount'];
-// 	}else{
-// 		$result['var']['amount'] = - $bill_details['amount'];
-// 	}
-// }
-// if($date1 !="" && $date2 !=""){$add.=" AND date BETWEEN '$date1' AND '$date2'";}
-
-// $sql=$conn->query("SELECT * FROM bill_account where 1".$add." ORDER BY date desc");
-
-// $total_amount = 0
-// while($r= mysqli_fetch_assoc($sql))
-// {
-// 	$result['pay'][]=$r;
-// 	$sell_quantity += $r['quantity'];
-// }
-
-// $sql=$conn->query("SELECT * FROM purchase_detail where productname='$product'".$add." ORDER BY date desc");
-
-// $purchase_quantity=0;
-// while($r= mysqli_fetch_assoc($sql))
-// {
-// 	$result['purchase'][]=$r;
-// 	$purchase_quantity+=$r['quantity'];
-// }
-// $result['qua']["sell"] =$sell_quantity;
-// $result['qua']["purchase"]=$purchase_quantity;
 echo json_encode($result);
 
 

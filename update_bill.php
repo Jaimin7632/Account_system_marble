@@ -2,7 +2,7 @@
 
 <div id="pop-up-out" class="pop-up"></div>
 <div id="pop-up-in" class="pop-up">
-    <form action="utils/add_bill_amount.php" method="post" style="position: relative;">
+    <form url="utils/add_bill_amount.php"  style="position: relative;">
         <input type="hidden" id="id" value="" name="id">
         <div class="container"> 
             
@@ -117,8 +117,11 @@ $('#update_bills').addClass('active');
             $('#id').val($event.target.value);
             
         };
-    });
 
+    });
+    $('#pop-up-out').click(function(){
+        $('.pop-up').removeClass('appear');
+    });
 
 
 </script>
