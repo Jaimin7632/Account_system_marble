@@ -39,12 +39,11 @@ if(!$result){
 
 	$stock = "CREATE TABLE stock (
 				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				date datetime NOT NULL,
+				date date NOT NULL,
 				product VARCHAR(100) NOT NULL,
 				product_type VARCHAR(100) NOT NULL,
 				add_minus int(5) NOT NULL,  # 1->pay, 2->receive
-				amount int(100) NOT NULL,
-				is_new int(5) NOT NULL
+				amount int(100) NOT NULL
 				)";
 	if ($conn->query($bill_account)!=True or $conn->query($stock)!=True){
 		print_r("Error while creating tables");

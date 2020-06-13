@@ -29,7 +29,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label">
                                                     <label class="control-label">Date</label>
-                                                    <input type="date" value="" name="date" class="form-control" id="date" required>
+                                                    <input type="date" value="" name="date" class="form-control" id="date"  required>
                                                 </div>
                                             </div>
                                          </div>    
@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="col-md-6 x">
                                                     <div class="radio" >
-                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="1" id="receive" required>Customer</label>
+                                                      <label style="width: 100px;"><input type="radio" name="pay_receive" value="1" id="receive" checked="True" required>Customer</label>
                                                     </div>
                                                 </div>
                                                 

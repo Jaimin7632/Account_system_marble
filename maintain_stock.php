@@ -12,7 +12,6 @@
                                 </div>
                                 <div class="card-content">
                                     <form url="utils/add_stock_data.php" if="myForm">
-                                        <input type="hidden"  name="is_new" value="0" id="is_new">
                                         <div class="row">
                                             
                                             <div class="col-md-6">
@@ -22,7 +21,7 @@
                                                         <select class="form-control" id="product_name"
                                                           onchange="toggleField(this,this.nextSibling)">
                                                             <option></option>
-                                                            <option value="customOption">[Type a custom value]</option>
+                                                            <option value="customOption">[ NEW PRODUCT ]</option>
                                                             <?php
                                                             $result = $conn->query("select DISTINCT product from stock");
                                                             while($row = $result->fetch_assoc()) {
@@ -40,10 +39,16 @@
                                                 <div class="form-group label">
                                                     <label class="control-label">Product_type</label>
                                                     
-                                                        <select class="form-control" name="product_type" ng-model="product_type" id="select_product_type" ng-repeat="x in product_type_data">
+                                                        <!-- <select class="form-control" name="product_type" ng-model="product_type" id="select_product_type" ng-repeat="x in product_type_data">
+
                                                             <option value="{{x.product_type}}">{{x.product_type}}</option>                                      
                                                         </select>
-                                                        <input type="text" class="form-control" id="text_product_type" style="display: none" disabled="True">
+                                                         -->
+                                                         <input type="text" name="product_type" required="required" class="form-control" id="text_product_type" list="p_type">
+                                                        <datalist id="p_type" ng-repeat="x in product_type_data">
+                                                            <option>{{x.product_type}}</option>
+                                                        </datalist>
+                                                       
                                                 </div>
                                             </div>
                                          </div>    
@@ -112,12 +117,12 @@ function toggleField(hideObj,showObj){
         showObj.style.display='block';
         showObj.name = "product";
         showObj.focus();
-        $('#select_product_type').css("display","none");
-        $('#select_product_type').attr("disabled","true");
+        // $('#select_product_type').css("display","none");
+        // $('#select_product_type').attr("disabled","true");
         
-        $('#text_product_type').css("display","block");
-        $('#text_product_type').removeAttr("disabled");
-        $('#text_product_type').attr('name','product_type');
+        // $('#text_product_type').css("display","block");
+        // $('#text_product_type').removeAttr("disabled");
+        // $('#text_product_type').attr('name','product_type');
 
         $('#is_new').val("1");
     }else{

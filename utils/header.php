@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li id="stock_report">
-                        <a href="./stock.php">
+                        <a href="./stock_report.php">
                             <i class="far fa-hdd"></i>
                             <p>Stock Report</p>
                         </a>

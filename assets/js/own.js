@@ -1,3 +1,8 @@
+window.onload = function()
+{
+     $(":text").attr('autocomplete', 'off');  // Here frmAccount indicates id of the form.
+}
+
 function showNoti(a,b){
      $.notify({
         icon: "",
@@ -111,6 +116,36 @@ app.controller('customersCtrl', function($scope, $http) {
      });
 
      
+    };
+
+    $scope.get_stock_report = function(){
+
+         $http({
+        method: "post",
+        url: "utils/get_stock_report.php",
+        data: {
+            product:  $('#product').val(),
+            date1:  $('#date1').val(),
+            date2:  $('#date2').val()
+            
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).then(function(response) {
+         $scope.stock_report = response.data.stock;
+         alert(JSON.stringify(response.data));
+         // obj = JSON.parse(JSON.stringify(response.data.bills));
+         // // alert(obj[0].id);
+         // $scope.effective_amount_total= 0;
+         // $scope.total_amount= 0;
+
+         // for(x in obj){
+         //    $scope.effective_amount_total += parseInt(obj[x].effective_amount);
+         //    $scope.total_amount += parseInt(obj[x].amount);
+         // }
+
+     });
+
+
     };
 
     $scope.expand_row = function($event){
