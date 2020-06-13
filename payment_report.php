@@ -59,7 +59,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group label">
                                                     <label class="control-label">Bill No</label>
-                                                    <select class="form-control"id="bill_no" ng-change="get_bills_report()" ng-model="bill_no" ng-repeat="x in bills_data">
+                                                    <select class="form-control" id="bill_no" ng-change="get_bills_report()" ng-model="bill_no" ng-repeat="x in bills_data">
                                                         <option value="{{x.bill_no}}">{{x.bill_no}}</option>
                                          </select>
                                          </div>

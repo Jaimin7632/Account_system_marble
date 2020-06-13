@@ -17,7 +17,7 @@ if($pname !="" && $bill_no!=""){
 if($date1 !="" && $date2 !=""){$add.=" AND date BETWEEN '$date1' AND '$date2'";}
 if($pay_receive != "") { $add .= " AND pay_receive=$pay_receive";}
 
-$sql=$conn->query("SELECT * FROM bill_account where ".$add." ORDER BY date desc");
+$sql=$conn->query("SELECT * FROM bill_account where ".$add." ORDER BY date asc");
 while($r = $sql->fetch_assoc()){
 	$bill_id= $r['id'];
 	$total_amount = 0;

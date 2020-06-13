@@ -13,7 +13,7 @@ function showNoti(a,b){
     });
     }
 
-
+$('form').trigger('reset');
 $('form').submit(function(e){
     element = $(this);
     $.ajax({
@@ -21,7 +21,7 @@ $('form').submit(function(e){
         type:'post',
         data:element.serialize(),
         success:function(response){
-
+            // alert(response);
             showNoti("success",response)
            
         }
@@ -37,14 +37,13 @@ app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
      scope_holder = $scope;
      $scope.get_product_type = function() {
-        alert("sda");
-        name = $scope.product_name;
+        name = $('#product_name').val();
         var post = $http({
                             method: "GET",
                             url: "utils/get_product_type.php?name="+name,                
                             headers: { "Content-Type": "application/json" }
                         }).then(function(response) {
-                        
+                        // alert(JSON.stringify(response.data));
                       $scope.product_type_data = response.data;
                       //alert(response.data);
                     });

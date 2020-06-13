@@ -6,6 +6,7 @@ if(isset($_GET['party_name'])){
 	$party_name = $_GET['party_name'];
 	$sql.= " AND party_name='$party_name'";
 }
+$sql.= " ORDER BY date ASC";
 $sql=$conn->query($sql);
 $result=array();
 
