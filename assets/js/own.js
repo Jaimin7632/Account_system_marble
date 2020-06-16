@@ -27,7 +27,7 @@ $('form').submit(function(e){
         data:element.serialize(),
         success:function(response){
             // alert(response);
-            showNoti("success",response)
+            showNoti("success",response);
            
         }
     });
@@ -132,16 +132,14 @@ app.controller('customersCtrl', function($scope, $http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response) {
          $scope.stock_report = response.data.stock;
-         alert(JSON.stringify(response.data));
-         // obj = JSON.parse(JSON.stringify(response.data.bills));
-         // // alert(obj[0].id);
-         // $scope.effective_amount_total= 0;
-         // $scope.total_amount= 0;
+         
+         obj = JSON.parse(JSON.stringify(response.data.stock));
+         // alert(obj[0].id);
+         $scope.total_amount= 0;
 
-         // for(x in obj){
-         //    $scope.effective_amount_total += parseInt(obj[x].effective_amount);
-         //    $scope.total_amount += parseInt(obj[x].amount);
-         // }
+         for(x in obj){
+            $scope.total_amount += parseInt(obj[x].amount);
+         }
 
      });
 

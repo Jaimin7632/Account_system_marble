@@ -67,18 +67,13 @@
                             <p>Stock Report</p>
                         </a>
                     </li>
-                    <li id="add_details">
-                        <a href="./aaddetails.php">
-                            <i class="fas fa-user-plus"></i>
-                            <p>Add details</p>
+                    <li id="edit_details">
+                        <a href="./edit_details.php">
+                            <i class="fas fa-edit"></i>
+                            <p>Edit details</p>
                         </a>
                     </li>
-                   <li id="delete_details">
-                        <a href="./deleteinfo.php">
-                            <i class="far fa-trash-alt"></i>
-                            <p>Delete Details</p>
-                        </a>
-                    </li>
+                   
                     <li class="active-pro">
                         <a href="http://www.blackqr.com">
                             

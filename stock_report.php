@@ -87,7 +87,7 @@
                                         </form>
                                     </div>
                                     <div class="col-md-6">
-                                       <h4 >Pending: <span class="text-primary">{{effective_amount_total}} </span>/ Total: <span class="text-primary">{{total_amount}}</span></h4>
+                                       <h4 >Total: <span class="text-primary">{{total_amount}}</span></h4>
                                         
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                             <th>No</th>
                                             <th>Product</th>
                                             <th>Product Type</th>
-                                            <th>Amount</th>
+                                            <th>Quantity</th>
                                             
                                         </thead>
                                         <tbody ng-repeat="x in stock_report">
