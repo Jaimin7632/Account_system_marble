@@ -36,6 +36,10 @@ $('form').submit(function(e){
      $('.pop-up').removeClass('appear');
 });
 
+ $('#pop-up-out').click(function(){
+        $('.pop-up').removeClass('appear');
+    });
+
        
 var scope_holder;
 app = angular.module('myApp', []);
@@ -54,57 +58,45 @@ app.controller('customersCtrl', function($scope, $http) {
                     });
           
     };
-    $scope.get_bills = function(){
-        name = $scope.product_name;
-                var post = $http({
+    $scope.get_bills = function(id="",is_bill=""){
 
+        $http({
                             method: "GET",
-                            url: "utils/get_bills.php",                
-                            headers: { "Content-Type": "application/json" }
+                            url: "utils/get_bills.php?id="+id+"&is_bill="+is_bill,                
+                           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                         }).then(function(response) {
-                        // alert(JSON.stringify(response.data));
-                      $scope.bills_data = response.data;
-                      //alert(response.data);
+                       // alert(JSON.stringify(response.data))
+                 $scope.bills_data =  response.data;
                     });
+          
+                
     };
 
-    $scope.get_party_bills = function(){
-        name = $scope.pname;
-            var post = $http({
-
-                            method: "GET",
-                            url: "utils/get_bills.php?party_name="+name,                
-                            headers: { "Content-Type": "application/json" }
-                        }).then(function(response) {
-                        // alert(JSON.stringify(response.data));
-                      $scope.bills_data = response.data;
-                      //alert(response.data);
-                    });
-    };
+    
 
     $scope.get_bills_report = function(){
-        bill_no = $('#bill_no').val();
-        if (typeof bill_no == 'undefined')
-        {
-            bill_no="";
-        }
+        bill_type = $('#bill_type').val();
+        date1 = $('#date1').val();
+        date2 = $('#date2').val();
+
+        bill_type = (typeof bill_type === 'undefined') ? "" : bill_type;
+        date1 = (typeof date1 === 'undefined') ? "" : date1;
+        date2 = (typeof date2 === 'undefined') ? "" : date2; 
         // alert(bill_no);
            $http({
         method: "post",
         url: "utils/get_bill_report.php",
         data: {
-            pname:  $('#pname').val(),
-            bill_no:  bill_no,
-            bill_type:  $('#bill_type').val(),
-            date1:  $('#date1').val(),
-            date2:  $('#date2').val()
+            bill_type:  bill_type,
+            date1:  date1,
+            date2:  date2
             
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response) {
          $scope.bills_report = response.data.bills;
+         // alert(JSON.stringify(response.data));
          obj = JSON.parse(JSON.stringify(response.data.bills));
-         // alert(obj[0].id);
          $scope.effective_amount_total= 0;
          $scope.total_amount= 0;
 
@@ -118,15 +110,24 @@ app.controller('customersCtrl', function($scope, $http) {
      
     };
 
+
     $scope.get_stock_report = function(){
+
+        product = $('#product').val();
+        date1 = $('#date1').val();
+        date2 = $('#date2').val();
+
+        product = (typeof product === 'undefined') ? "" : product;
+        date1 = (typeof date1 === 'undefined') ? "" : date1;
+        date2 = (typeof date2 === 'undefined') ? "" : date2; 
 
          $http({
         method: "post",
         url: "utils/get_stock_report.php",
         data: {
-            product:  $('#product').val(),
-            date1:  $('#date1').val(),
-            date2:  $('#date2').val()
+            product:  product,
+            date1:  date1,
+            date2:  date2
             
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

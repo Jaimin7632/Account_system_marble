@@ -47,31 +47,7 @@
                                         <input type="text" value="" placeholder="Search" class="form-control" ng-model="search" name="">
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                         <select class="form-control" id="pname" ng-model="pname" ng-change="get_party_bills()">
-                                                        <option value="">Party Name</option>
-                                                        <?php
-                                                             $res= $conn->query("SELECT * from bill_account where is_bill=1");
-                                                            while($r=mysqli_fetch_assoc($res)){
-                                                            echo '<option value="'.$r['party_name'].'">'.$r['party_name'].'</option>';
-                                                                }
-                                                        ?>
-                                                       
-                                         </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group label">
-                                                    <label class="control-label">Bill No</label>
-                                                    <select class="form-control" id="bill_no" ng-change="get_bills_report()" ng-model="bill_no" ng-repeat="x in bills_data">
-                                                        <option value="{{x.bill_no}}">{{x.bill_no}}</option>
-                                         </select>
-                                         </div>
-                                         
-                                    </div>
-
-                                </div>
+                                
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">

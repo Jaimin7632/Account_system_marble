@@ -64,7 +64,7 @@
                                     <div class="row">
                                         <center>
                                             <div class="col-md-12">
-                                            <input type="text" class="form-control" id="search_bill" placeholder="Search"  ng-change="get_bills()" ng-model="s_bill">
+                                            <input type="text" class="form-control" id="search_bill" placeholder="Search"  ng-model="s_bill">
                                         </div>
                                         
                                         </center>
@@ -111,7 +111,7 @@
 $('#update_bills').addClass('active');
 
     $(document).ready(function(){
-        scope_holder.get_bills();
+        scope_holder.get_bills("",1);
         scope_holder.open_pompt = function($event){
             $('.pop-up').addClass('appear');
             $('#id').val($event.target.value);
@@ -119,9 +119,7 @@ $('#update_bills').addClass('active');
         };
 
     });
-    $('#pop-up-out').click(function(){
-        $('.pop-up').removeClass('appear');
-    });
+   
 
 
 </script>

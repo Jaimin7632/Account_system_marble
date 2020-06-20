@@ -24,7 +24,7 @@ $sql=$conn->query("SELECT DISTINCT product FROM stock where ".$add);
 while($r = $sql->fetch_assoc()){
 
 	$product = $r['product'];
-	$p_type = $conn->query("SELECT DISTINCT product_type,product from stock where product='$product'");
+	$p_type = $conn->query("SELECT DISTINCT product_type,product,id from stock where product='$product'");
 	
 	while($pt= $p_type->fetch_assoc()){
 		$product_type = $pt['product_type'];

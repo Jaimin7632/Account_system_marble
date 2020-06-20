@@ -42,7 +42,7 @@ foreach ($y as $key => $value) {
 	$row = array();
 	$width=array();
 	$row[] = $id++;
-	$width[] = $cell_width;
+	$width[] = 20;
 	foreach ($value as $key2 => $value2) {
 		if(in_array(strtolower($key2), $ignore_list)){
 			continue;

@@ -3,17 +3,13 @@ include "connection.php";
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
  
- $pname = $request->pname;
- $bill_no = $request->bill_no;
  $date1 = $request->date1;
  $date2 = $request->date2;
  $pay_receive= $request->bill_type;
 
 $result=array();
 $add="1 AND is_bill=1";
-if($pname !="" && $bill_no!=""){
-	$add.=" AND party_name='$pname' AND bill_no=$bill_no";
-}
+
 if($date1 !="" && $date2 !=""){$add.=" AND date BETWEEN '$date1' AND '$date2'";}
 if($pay_receive != "") { $add .= " AND pay_receive=$pay_receive";}
 
