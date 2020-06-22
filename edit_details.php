@@ -226,6 +226,7 @@
                                                                       <th>Mobile No</th>
                                                                       <th>Amount</th>
                                                                       <th>Effective Amount</th>
+                                                                      <th>Delete</th>
                                                                       <th>Edit</th>
                                                                       
                                                                   </thead>
@@ -244,6 +245,7 @@
                                                                           <td >{{x.mobile_no}}</td>
                                                                           <td >{{x.amount}}</td>
                                                                           <td >{{x.effective_amount}}</td>
+                                                                          <td><button class="btn btn-danger" ng-click="delete_party($event, x)">DELETE</button></td>
                                                                           <td><button class="btn btn-success" id="open_pompt" value="{{x.id}}" ng-click="open_pompt_party($event, x)">Edit</button></td>
                                                                       </tr>
                                                                       <tr ng-repeat="entry in x.details">
@@ -252,6 +254,7 @@
                                                                           <td >{{entry.pay_receive | add_less}}</td>
                                                                           <td >{{entry.comment}}</td>
                                                                           <td >{{entry.amount}}</td>
+                                                                          <td><button class="btn btn-danger" ng-click="delete_party($event, entry)">DELETE</button></td>
                                                                           <td><button class="btn btn-success" id="open_pompt" value="{{x.id}}" ng-click="open_pompt_party($event,entry)">Edit</button></td>
 
                                                                       </tr>
@@ -284,6 +287,7 @@
                                             <th>Product</th>
                                             <th>Product Type</th>
                                             <th>Quantity</th>
+                                            <th>Delete</th>
                                             <th>Edit</th>
                                             
                                         </thead>
@@ -296,6 +300,7 @@
                                                 <td >{{x.product}}</td>
                                                 <td >{{x.product_type}}</td>
                                                 <td >{{x.amount}}</td>
+                                                <td><button class="btn btn-danger" ng-click="delete_product($event, x,1)">DELETE</button></td>
                                                 <td><button class="btn btn-success" id="open_pompt" value="{{x.id}}" ng-click="open_pompt_product($event,x)">Edit</button></td>
                                                 
                                             </tr>
@@ -304,6 +309,7 @@
                                                 <td >{{entry.date}}</td>
                                                 <td >{{entry.add_minus | add_less}}</td>
                                                 <td >{{entry.amount}}</td>
+                                                <td><button class="btn btn-danger" ng-click="delete_product($event, entry,0)">DELETE</button></td>
                                                 <td><button class="btn btn-success" id="open_pompt" value="{{entry.id}}" ng-click="open_pompt_product($event,entry)">Edit</button></td>
 
                                             </tr>

@@ -24,15 +24,19 @@ $sql=$conn->query("SELECT DISTINCT product FROM stock where ".$add);
 while($r = $sql->fetch_assoc()){
 
 	$product = $r['product'];
-	$p_type = $conn->query("SELECT DISTINCT product_type,product,id from stock where product='$product'");
+	$p_type = $conn->query("SELECT DISTINCT product_type from stock where product='$product'");
 	
 	while($pt= $p_type->fetch_assoc()){
 		$product_type = $pt['product_type'];
-		$d= $conn->query("SELECT * from stock where ".$add." AND product_type='$product_type' ORDER BY date asc");
-		#echo "SELECT * from stock where ".$add." AND product_type='$product_type' ORDER BY date asc";
+
+		$sql2 = "SELECT * from stock where product='$product' AND product_type='$product_type'";
+		if($date1 !="" && $date2 !=""){$sql2.=" AND date BETWEEN '$date1' AND '$date2'";}
+
+		$d= $conn->query($sql2." ORDER BY date asc");
 		$amount =0;
 		$details = array();
 		while($row_data= $d->fetch_assoc()){
+			// echo $row_data['product_type'];
 			if($row_data['add_minus'] == 0){
 				$amount += $row_data['amount'];
 			}else{
@@ -40,6 +44,9 @@ while($r = $sql->fetch_assoc()){
 			}
 			$details[] = $row_data;
 			$pt['date'] = $row_data['date'];
+
+			$pt['product'] = $row_data['product'];
+			$pt['id'] = $row_data['id'];
 		}
 		$pt['amount'] = $amount;
 		$pt['details'] = $details;

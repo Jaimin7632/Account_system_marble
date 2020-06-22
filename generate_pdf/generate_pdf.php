@@ -17,6 +17,11 @@ $date = "Date: ".date("d/m/Y");
 $pdf->Cell($cell_width,10,$date);
 $pdf->ln();
 
+if(isset($_POST['header_data'])){
+	$pdf->Cell($cell_width,7,$_POST['header_data']);
+	$pdf->ln();
+	$pdf->ln();
+}
 
 $ignore_list = array('comment','bill_id','details','is_bill','pay_receive','id');
 
@@ -42,7 +47,7 @@ foreach ($y as $key => $value) {
 	$row = array();
 	$width=array();
 	$row[] = $id++;
-	$width[] = 20;
+	$width[] = $cell_width;
 	foreach ($value as $key2 => $value2) {
 		if(in_array(strtolower($key2), $ignore_list)){
 			continue;

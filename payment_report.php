@@ -119,6 +119,7 @@
                                             <th>Mobile No</th>
                                             <th>Amount</th>
                                             <th>Effective Amount</th>
+                                            <th>PDF</th>
                                             
                                         </thead>
                                         <tbody ng-repeat="x in bills_report | filter :search">
@@ -136,6 +137,14 @@
                                                 <td >{{x.mobile_no}}</td>
                                                 <td >{{x.amount}}</td>
                                                 <td >{{x.effective_amount}}</td>
+                                                <td>
+                                                    <form action="./generate_pdf/generate_pdf.php" method="post">
+                                                    <input type="hidden" name='data' value="{{x.details}}" name="">
+                                                    <input type="hidden" name='footer_data' value="Pending: {{x.effective_amount}} /  Total: {{x.amount}}" name="">
+                                                    <input type="hidden" name='header_data' value="{{x.party_name}}" name="">
+                                                    <input type="submit" value="PDF" style="background: #f44336 !important;" class="btn btn-danger" name="sddaf">
+                                                </form>
+                                                </td>
                                             </tr>
                                             <tr ng-repeat="entry in x.details">
                                                 <td>{{$index + 1}}</td>

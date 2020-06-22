@@ -81,8 +81,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <form action="generate_pdf/generate_pdf.php" method="post">
-                                        <input type="hidden" name='data' value="{{bills_report}}" name="">
-                                        <input type="hidden" name='footer_data' value="Pending: {{effective_amount_total}} /  Total: {{total_amount}}" name="">
+                                        <input type="hidden" name='data' value="{{stock_report}}" name="">
+                                        <input type="hidden" name='footer_data' value="Total: {{total_amount}}" name="">
                                         <input type="submit" value="PDF" style="background: #f44336 !important;" class="btn btn-danger" name="">
                                         </form>
                                     </div>

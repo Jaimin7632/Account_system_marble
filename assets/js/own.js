@@ -132,6 +132,7 @@ app.controller('customersCtrl', function($scope, $http) {
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response) {
+        // alert(JSON.stringify(response.data));
          $scope.stock_report = response.data.stock;
          
          obj = JSON.parse(JSON.stringify(response.data.stock));
@@ -155,6 +156,29 @@ app.controller('customersCtrl', function($scope, $http) {
         }else{
             $(element).toggleClass("active", "").nextUntil('.header').css('display', 'none');
             
+        }
+    };
+
+    $scope.delete_party = function($event, obj){
+        if(confirm("Are you sure you want to delete "+obj.party_name+" ?")){
+            $.post('utils/delete_party.php', { id: obj.id, is_bill: obj.is_bill}, 
+                function(response){
+                     showNoti("success",response);
+                     $scope.get_bills_report();
+            });
+        }
+    };
+
+    $scope.delete_product = function($event, obj, all){
+        if(confirm("Are you sure you want to delete "+obj.product+" ?")){
+            $.post('utils/delete_product.php', { id : obj.id,
+                                                product: obj.product, 
+                                                product_type: obj.product_type,
+                                                all: all}, 
+                function(response){
+                     showNoti("success",response);
+                     $scope.get_stock_report();
+            });
         }
     };
 
