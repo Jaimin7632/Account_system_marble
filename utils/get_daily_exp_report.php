@@ -8,6 +8,7 @@ $request = json_decode($postdata);
 
 
 $result=array();
+$result['daily_exp']= [];
 $add="1 ";
 
 if($date1 !="" && $date2 !=""){$add.=" AND date BETWEEN '$date1' AND '$date2'";}

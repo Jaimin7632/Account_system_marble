@@ -8,6 +8,7 @@ $request = json_decode($postdata);
  $pay_receive= $request->bill_type;
 
 $result=array();
+$result['bills']= [];
 $add="1 AND is_bill=1";
 
 if($date1 !="" && $date2 !=""){$add.=" AND date BETWEEN '$date1' AND '$date2'";}
@@ -53,5 +54,5 @@ while($r = $sql->fetch_assoc()){
 
 echo json_encode($result);
 
-
+$conn->close();
 ?>

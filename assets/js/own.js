@@ -131,8 +131,18 @@ app.controller('customersCtrl', function($scope, $http) {
     }).then(function(response) {
          $scope.daily_exp_report = response.data.daily_exp;
          alert(JSON.stringify(response.data));
+         $scope.daily_exp_total=0;
         
+         obj = JSON.parse(JSON.stringify(response.data.daily_exp));
+         
 
+         for(x in obj){
+            if(obj[x].add_minus == 0){
+                $scope.daily_exp_total += parseInt(obj[x].amount);
+            }else{
+                 $scope.daily_exp_total -= parseInt(obj[x].amount);
+            }
+         }
      });
 
 
@@ -236,5 +246,37 @@ app.filter( 'add_less', function() {
         if(input==1){return "LESS";}else if(input==0){ return "ADD";}
         if(input==11){return "Customer";}else if(input==10){ return "Vendor";}
 
+        }
+});
+
+app.filter( 'add_credit_debit', function() {
+    return function(it) {
+        try{
+            var input = JSON.parse(JSON.stringify(it));
+            for(var i in input){
+                if('amount' in  input[i]){
+                    if("pay_receive" in input[i]){
+                         am = input[i]['pay_receive'];
+                         delete input[i]['pay_receive'];
+                         input[i]['add_minus'] = am;
+                        }
+
+                
+                    amount = input[i]['amount'];
+                    delete input[i]['amount']
+                    if(input[i]['add_minus'] == "0" || input[i]['add_minus'] == "00"){
+                        input[i]['credit'] = amount;
+                        input[i]['debit'] = 0;
+                    }else{
+                        input[i]['Credit'] = 0;
+                        input[i]['Debit'] = amount;
+                    }
+                }
+            }
+
+            return input;
+        }catch(err){
+            return it;
+        }
         }
 });

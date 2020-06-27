@@ -98,6 +98,20 @@
                                         </div>
                                        
                                      </div>
+
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                              <form action="./generate_pdf/generate_pdf.php" method="post">
+                                                    <input type="hidden" name='data' value="{{daily_exp_report | add_credit_debit}}" name="">
+                                                    <input type="hidden" name='footer_data' value="Pending: {{x.effective_amount}} /  Total: {{x.amount}}" name="">
+                                                    <input type="hidden" name='header_data' value="{{x.party_name}}" name="">
+                                                    <input type="submit" value="PDF" style="background: #f44336 !important;" class="btn btn-danger" name="sddaf">
+                                                </form>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <h4>Amount : {{daily_exp_total}}</h4>
+                                         </div>
+                                     </div>
                                 </div>
                                 <div class="card-content table-responsive" >
                                     <table class="table" >
@@ -115,7 +129,7 @@
                                            <!--  <tr class="header" ng-repeat="x in bills_report">
                                                 <td>{{x.id}}</td>
                                             </tr> -->
-                                            <tr class="header" ng-click="expand_row($event)" >
+                                            <tr  >
                                                 <td>{{$index + 1}}</td>
                                                 <td >{{x.date}}</td>
                                                 <td >{{x.add_minus | add_less}}</td>

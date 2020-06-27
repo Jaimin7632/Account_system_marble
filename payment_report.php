@@ -139,7 +139,7 @@
                                                 <td >{{x.effective_amount}}</td>
                                                 <td>
                                                     <form action="./generate_pdf/generate_pdf.php" method="post">
-                                                    <input type="hidden" name='data' value="{{x.details}}" name="">
+                                                    <input type="hidden" name='data' value="{{x.details | add_credit_debit}}" name="">
                                                     <input type="hidden" name='footer_data' value="Pending: {{x.effective_amount}} /  Total: {{x.amount}}" name="">
                                                     <input type="hidden" name='header_data' value="{{x.party_name}}" name="">
                                                     <input type="submit" value="PDF" style="background: #f44336 !important;" class="btn btn-danger" name="sddaf">

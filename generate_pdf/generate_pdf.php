@@ -23,7 +23,7 @@ if(isset($_POST['header_data'])){
 	$pdf->ln();
 }
 
-$ignore_list = array('comment','bill_id','details','is_bill','pay_receive','id');
+$ignore_list = array('comment','bill_id','details','is_bill','pay_receive','id','add_minus');
 
 
 

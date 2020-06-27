@@ -12,6 +12,7 @@ $request = json_decode($postdata);
 // $date2= "";
 
 $result=array();
+$result['stock']=[];
 $add=" 1";
 if($product !=""){
 	$add.=" AND product='$product'";
