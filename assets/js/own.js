@@ -130,7 +130,7 @@ app.controller('customersCtrl', function($scope, $http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response) {
          $scope.daily_exp_report = response.data.daily_exp;
-         alert(JSON.stringify(response.data));
+         // alert(JSON.stringify(response.data));
          $scope.daily_exp_total=0;
         
          obj = JSON.parse(JSON.stringify(response.data.daily_exp));
