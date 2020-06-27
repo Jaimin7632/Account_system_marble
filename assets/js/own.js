@@ -249,6 +249,25 @@ app.filter( 'add_less', function() {
         }
 });
 
+app.filter( 'remove_extra_bills', function() {
+    return function( it ) {
+        try{
+            var input = JSON.parse(JSON.stringify(it));
+            for(var i in input){
+                if('effective_amount' in  input[i]){
+                   if(input[i]['effective_amount']=="0"){
+                    input.splice(i,1)
+                   }
+                }
+            }
+
+            return input;
+        }catch(err){
+            return it;
+        }
+        }
+});
+
 app.filter( 'add_credit_debit', function() {
     return function(it) {
         try{
