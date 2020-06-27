@@ -259,7 +259,7 @@
 
                                                                       </tr>
                                                                     
-                                                                      </tr>
+                                                                      
                                                                      
                                                                   </tbody>
                                                               </table>
@@ -314,7 +314,7 @@
 
                                             </tr>
                                           
-                                            </tr>
+                                          
                                            
                                         </tbody>
                                     </table>

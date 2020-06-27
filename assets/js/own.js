@@ -111,6 +111,34 @@ app.controller('customersCtrl', function($scope, $http) {
     };
 
 
+    $scope.get_daily_exp = function(){
+
+        date1 = $('#date1').val();
+        date2 = $('#date2').val();
+
+        date1 = (typeof date1 === 'undefined') ? "" : date1;
+        date2 = (typeof date2 === 'undefined') ? "" : date2; 
+
+          $http({
+        method: "post",
+        url: "utils/get_daily_exp_report.php",
+        data: {
+            date1:  date1,
+            date2:  date2
+            
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).then(function(response) {
+         $scope.daily_exp_report = response.data.daily_exp;
+         alert(JSON.stringify(response.data));
+        
+
+     });
+
+
+    };
+
+
     $scope.get_stock_report = function(){
 
         product = $('#product').val();
@@ -168,6 +196,18 @@ app.controller('customersCtrl', function($scope, $http) {
             });
         }
     };
+
+
+    $scope.delete_daily_exp = function($event, obj){
+        if(confirm("Are you sure you want to delete "+obj.date+" of amount "+obj.amount+" ?")){
+            $.post('utils/delete_daily_exp_data.php', { id: obj.id}, 
+                function(response){
+                     showNoti("success",response);
+                     $scope.get_daily_exp();
+            });
+        }
+    };
+
 
     $scope.delete_product = function($event, obj, all){
         if(confirm("Are you sure you want to delete "+obj.product+" ?")){

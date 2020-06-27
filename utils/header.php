@@ -67,6 +67,12 @@
                             <p>Stock Report</p>
                         </a>
                     </li>
+                    <li id="daily_expenditure">
+                        <a href="./daily_expenditure.php">
+                            <i class="far fa-hdd"></i>
+                            <p>Daily Expenditure</p>
+                        </a>
+                    </li>
                     <li id="edit_details">
                         <a href="./edit_details.php">
                             <i class="fas fa-edit"></i>

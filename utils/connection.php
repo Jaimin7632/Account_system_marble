@@ -30,7 +30,7 @@ if(!$result){
 				bill_no VARCHAR(30) NOT NULL,
 				book_no VARCHAR(50) NOT NULL,
 				mobile_no VARCHAR(50) NOT NULL,
-				pay_receive int(5) NOT NULL,  # 1->pay, 0->receive
+				pay_receive int(5) NOT NULL,  
 				comment VARCHAR(500) NULL,
 				amount int(100) NOT NULL,
 				is_bill int(5) NOT NULL,
@@ -42,10 +42,18 @@ if(!$result){
 				date date NOT NULL,
 				product VARCHAR(100) NOT NULL,
 				product_type VARCHAR(100) NOT NULL,
-				add_minus int(5) NOT NULL,  # 1->pay, 2->receive
+				add_minus int(5) NOT NULL, 
 				amount int(100) NOT NULL
 				)";
-	if ($conn->query($bill_account)!=True or $conn->query($stock)!=True){
+	$daily_expenditure = "CREATE TABLE daily_expenditure (
+				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				date date NOT NULL,
+				add_minus int(5) NOT NULL,  
+				amount int(100) NOT NULL,  
+				comment VARCHAR(500) NULL
+				)";				
+
+	if ($conn->query($bill_account)!=True or $conn->query($stock)!=True or $conn->query($daily_expenditure)!=True){
 		print_r("Error while creating tables");
 	}
 
