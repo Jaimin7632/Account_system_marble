@@ -19,6 +19,7 @@
    <link rel="stylesheet" href="fontawesome/web-fonts-with-css/css/fontawesome-all.css" >
 
     <script src="assets/js/angular179.js"></script>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
     
 </head>

@@ -55,8 +55,22 @@ app.controller('customersCtrl', function($scope, $http) {
                         // alert(JSON.stringify(response.data));
                       $scope.product_type_data = response.data;
                       //alert(response.data);
+                      var arr = []
+                      obj = JSON.parse(JSON.stringify(response.data));
+                      for(var x in obj){
+                          arr.push(obj[x].product_type);
+                      }
+                      console.log(arr);
+                     try {
+                        $( "#text_product_type" ).autocomplete({
+                            source: arr
+                          }); 
+                     } catch (error) {
+                         console.log(error);
+                     }
+
                     });
-          
+          1
     };
     $scope.get_bills = function(id="",is_bill=""){
 

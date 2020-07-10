@@ -44,10 +44,8 @@
                                                             <option value="{{x.product_type}}">{{x.product_type}}</option>                                      
                                                         </select>
                                                          -->
-                                                         <input type="text" name="product_type" required="required" class="form-control" id="text_product_type" list="p_type">
-                                                        <datalist id="p_type" ng-repeat="x in product_type_data">
-                                                            <option value="{{x.product_type}}"></option>
-                                                        </datalist>
+                                                         <input type="text" name="product_type" required="required" autocomplete="off" class="form-control" id="text_product_type" list="p_type">
+                                                        
                                                        
                                                 </div>
                                             </div>
