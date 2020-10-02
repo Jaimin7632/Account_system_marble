@@ -267,15 +267,16 @@ app.filter( 'remove_extra_bills', function() {
     return function( it ) {
         try{
             var input = JSON.parse(JSON.stringify(it));
+            var final = []
             for(var i in input){
                 if('effective_amount' in  input[i]){
-                   if(input[i]['effective_amount']=="0"){
-                    input.splice(i,1)
+                   if(parseInt(input[i]['effective_amount'] ) !=0){
+                     final.push(input[i])
                    }
                 }
             }
 
-            return input;
+            return final;
         }catch(err){
             return it;
         }
